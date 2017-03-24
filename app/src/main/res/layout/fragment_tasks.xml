@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <!--绑定view-->
+        <variable name="view"
+                  type="com.jesse.mj.mvvm_demo.tasks.TasksFragment"/>
+        <!--绑定viewmodel-->
+        <variable name="viewmodel"
+                  type="com.jesse.mj.mvvm_demo.tasks.TasksViewModel"/>
+    </data>
+
+    <com.jesse.mj.mvvm_demo.view.ScrollChildSwipeRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/tasks_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true">
+            <LinearLayout
+                android:id="@+id/view_tasks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/filter_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    tools:text="@string/to_do_list"/>
+
+                <ListView
+                    android:id="@+id/tasks_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/no_tasks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/image_no_tasks"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp" android:layout_gravity="center"/>
+                <TextView
+                    android:id="@+id/text_no_tasks_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" android:layout_marginBottom="8dp"/>
+                <TextView
+                    android:id="@+id/text_no_tasks_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/touch_feedback"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:onClick="@{()->viewmodel.addNewTask()}"
+                    android:text="Add a TO-DO item +"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </com.jesse.mj.mvvm_demo.view.ScrollChildSwipeRefreshLayout>
+</layout>

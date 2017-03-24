@@ -1,0 +1,1 @@
+主要用来学习Google的MVVM架构
